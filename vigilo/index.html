@@ -39,6 +39,15 @@ h2{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.035em}
 .plan[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
 .plan[aria-pressed="true"] .muted{color:var(--muted)}
 .plan[aria-pressed="true"] .badge{background:var(--violet)}
+.call{background:rgba(255,255,255,.95);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+.call-head{display:flex;align-items:center;gap:6px;font-size:12px;color:#3A3A3C;font-weight:700}
+.call-text{font-size:17px;font-weight:600;line-height:1.35}
+.call-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.act{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#E5E5EA;color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s}
+.act:active{transform:scale(.96)}
+.act-main{background:#000;color:#fff}
+.call-done{display:flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;font-size:15px;font-weight:700;color:var(--violet);animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 details{background:#fff;border-radius:18px;padding:18px 20px}
 summary{font-weight:600;font-size:17px;cursor:pointer}
 details p{margin-top:10px;color:var(--muted);font-size:16px}
@@ -116,7 +125,7 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- CASO 1 -->
 <section class="sec" style="background:var(--violet);color:#fff">
-<div class="kicker rv-r" style="color:#E4DEFF">CASO 1 · LA VOCE CLONATA</div>
+<div class="kicker rv-r" style="color:#E4DEFF">LA VOCE CLONATA</div>
 <p class="rv-r" style="--d:.1s;font-size:21px;line-height:1.4;font-weight:600">Se i tuoi genitori ricevessero una chiamata così, con la tua voce, cosa farebbero?</p>
 <div class="bubble rv-r" data-type style="--d:.2s;background:#fff;color:var(--ink)"><span class="ghost">«Mamma, sono io. Mi servono 2.000 € subito.»</span><span class="typed"></span></div>
 <h2 class="rv-r" style="margin-top:12px">La voce si clona. La parola d'ordine no.</h2>
@@ -126,7 +135,7 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- CASO 2 -->
 <section class="sec" style="background:#000;color:#fff">
-<div class="kicker rv-r" style="color:#AEAEB2">CASO 2 · LA FINTA BANCA</div>
+<div class="kicker rv-r" style="color:#AEAEB2">LA FINTA BANCA</div>
 <div class="bubble rv-r" data-type style="--d:.1s;background:#1C1C1E"><span class="ghost">«Buongiorno, la chiamo dall'ufficio sicurezza della sua banca. Ci serve il codice che le è appena arrivato via SMS.»</span><span class="typed"></span></div>
 <h2 class="rv-r" style="margin-top:12px">Una banca vera non ti chiede codici al telefono.</h2>
 <p class="rv-r" style="font-size:18px;line-height:1.45;color:#E5E5EA">Vigilo controlla il numero e cosa ti stanno chiedendo. Se non torna, la chiamata non arriva a te.</p>
@@ -135,11 +144,36 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- CASO 3 -->
 <section class="sec" style="background:var(--soft)">
-<div class="kicker rv-r" style="color:var(--muted)">CASO 3 · LA CHIAMATA COMMERCIALE</div>
+<div class="kicker rv-r" style="color:var(--muted)">LA CHIAMATA COMMERCIALE</div>
 <div class="bubble rv-r" data-type style="--d:.1s;background:#fff"><span class="ghost">«Buongiorno, la chiamo per un'offerta luce e gas a lei riservata…»</span><span class="typed"></span></div>
 <h2 class="rv-r" style="margin-top:12px">Il telemarketing non ti interrompe più.</h2>
 <p class="rv-r" style="font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo risponde, ringrazia e chiude. Se la chiamata è illecita, la segnala al Registro delle Opposizioni.</p>
 <div class="answer after" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B3DF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Vigilo:</strong> offerta luce e gas, l'ho rifiutata. Non ti ho disturbato.</div></div>
+</section>
+
+<!-- QUANDO TI CERCANO DAVVERO -->
+<section class="sec">
+<div class="kicker rv-r" style="color:var(--violet)">QUANDO TI CERCANO DAVVERO</div>
+<h2 class="rv-r" style="--d:.08s">E se è una chiamata importante?</h2>
+<p class="rv-r" style="--d:.16s;font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo ti dice chi è e cosa vuole. Tu decidi con un tocco.</p>
+<div style="margin-top:8px;border-radius:32px;padding:18px;background:linear-gradient(160deg,#FF5FA2 0%,#7B4DFF 45%,#2B6BFF 100%);display:flex;flex-direction:column;gap:12px">
+<div class="call rv-r" style="--d:.1s">
+<div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · ORA</div>
+<div class="call-text">Chiamano dallo studio medico per confermare l'appuntamento di giovedì alle 9:30.</div>
+<div class="call-actions">
+<button type="button" class="act act-main" data-done="Appuntamento confermato">Conferma appuntamento</button>
+<button type="button" class="act" data-done="Ti passo la chiamata…">Passami la chiamata</button>
+</div>
+</div>
+<div class="call rv-r" style="--d:.3s">
+<div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · 2 MIN FA</div>
+<div class="call-text">È un cliente che vorrebbe un intervento in via Garibaldi, a Genova.</div>
+<div class="call-actions">
+<button type="button" class="act act-main" data-done="Ti passo la chiamata…">Passami la chiamata</button>
+<button type="button" class="act" data-done="Gli ho detto che lo richiami">Richiamo io</button>
+</div>
+</div>
+</div>
 </section>
 
 <!-- COME FUNZIONA -->
@@ -283,6 +317,19 @@ Bastano 2 minuti per attivarlo
   // Hero notifications drop in one after the other
   setTimeout(function () { document.getElementById('n1').classList.add('in'); }, reduce ? 0 : 900);
   setTimeout(function () { document.getElementById('n2').classList.add('in'); }, reduce ? 0 : 1700);
+
+  // Call actions: tap a button, the card shows the outcome
+  document.querySelectorAll('.call .act').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var row = btn.parentElement;
+      var done = document.createElement('div');
+      done.className = 'call-done';
+      done.setAttribute('role', 'status');
+      done.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
+      done.appendChild(document.createTextNode(btn.dataset.done));
+      row.replaceWith(done);
+    });
+  });
 
   // Plan selection drives the CTA
   var names = { solo: 'Solo', duo: 'Duo', family: 'Family' };
