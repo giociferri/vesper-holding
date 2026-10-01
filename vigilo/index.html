@@ -6,8 +6,9 @@
 <title>Vigilo · Truffe telefoniche? Risponde Vigilo.</title>
 <meta name="description" content="Vigilo risponde ai numeri sconosciuti al posto tuo, controlla chi è e ti passa solo le chiamate autorizzate.">
 <meta name="robots" content="noindex">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0A0A0A;--muted:#48484A;--soft:#F2F2F7;--violet:#5B3DF5;--coral:#FF8A5B}
 *{box-sizing:border-box}
@@ -19,26 +20,45 @@ a{color:#000}a:hover{color:var(--violet)}
 h1,h2,h3,p{margin:0}
 h2{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.035em}
 .kicker{font-size:13px;font-weight:700;letter-spacing:0.08em}
-.bubble{border-radius:24px 24px 24px 6px;padding:20px 22px;font-size:20px;font-weight:600;line-height:1.35}
+.bubble{border-radius:24px 24px 24px 6px;padding:20px 22px;font-size:20px;font-weight:600;line-height:1.35;display:grid}
+.bubble > span{grid-area:1/1}
+.bubble .ghost{visibility:hidden}
+.caret{display:inline-block;width:2px;height:1.05em;background:currentColor;vertical-align:-0.15em;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
 .answer{border-radius:20px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.45}
 .answer svg{flex-shrink:0;margin-top:2px}
-.pill{display:inline-flex;align-items:center;min-height:56px;padding:0 28px;border-radius:999px;font-weight:600;font-size:19px;text-decoration:none;align-self:flex-start}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;border-radius:999px;font-weight:600;font-size:19px;text-decoration:none;align-self:flex-start}
 .step{background:var(--soft);border-radius:24px;padding:22px;display:flex;gap:16px;align-items:flex-start}
 .step .n{flex-shrink:0;width:44px;height:44px;border-radius:999px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
 .step h3{font-size:19px;font-weight:700}
 .step p{font-size:16px;color:var(--muted);margin-top:4px}
-.plan{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;cursor:pointer;padding:20px;border-radius:22px;min-height:88px;background:#1C1C1E;color:#fff;border:2px solid #3A3A3C}
+.plan{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;cursor:pointer;padding:20px;border-radius:22px;min-height:96px;background:#1C1C1E;color:#fff;border:2px solid #3A3A3C;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.plan:active{transform:scale(.98)}
 .plan .muted{font-size:14px;color:#AEAEB2}
 .plan .badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#3A3A3C;color:#fff}
 .plan[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
 .plan[aria-pressed="true"] .muted{color:var(--muted)}
 .plan[aria-pressed="true"] .badge{background:var(--violet)}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:15px;font-weight:600}
-.field input,.field select{min-height:52px;border-radius:14px;border:1.5px solid #C7C7CC;padding:0 14px;font:inherit;background:#fff;color:var(--ink)}
 details{background:#fff;border-radius:18px;padding:18px 20px}
 summary{font-weight:600;font-size:17px;cursor:pointer}
 details p{margin-top:10px;color:var(--muted);font-size:16px}
+
+/* scroll effects */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.js .rv-r{opacity:0;transform:translateX(80px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.js .rv-paper{opacity:0;transform:translateX(110%) rotate(6deg);transition:opacity .6s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.js .rv-pop{opacity:0;transform:scale(.85);transition:opacity .6s ease,transform .7s cubic-bezier(.2,1.4,.4,1);transition-delay:var(--d,0s)}
+.js .rv.in,.js .rv-r.in,.js .rv-pop.in{opacity:1;transform:none}
+.js .rv-paper.in{opacity:1;transform:rotate(-1.5deg)}
+.js .after{opacity:0;transform:translateX(60px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .after.in{opacity:1;transform:none}
+.js .notif{opacity:0;transform:translateY(-24px) scale(.96);transition:opacity .6s ease,transform .7s cubic-bezier(.2,1.2,.4,1)}
+.js .notif.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .js .rv,.js .rv-r,.js .rv-paper,.js .rv-pop,.js .after,.js .notif{opacity:1;transform:none;transition:none}
+  .js .rv-paper{transform:rotate(-1.5deg)}
+  .caret{display:none}
+}
 </style>
 </head>
 <body>
@@ -54,20 +74,20 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- HERO -->
 <section style="background:#000;color:#fff;padding:48px 20px 0;display:flex;flex-direction:column;gap:20px">
-<h1 style="font-weight:700;font-size:48px;line-height:1.04;letter-spacing:-0.035em"><span style="color:#AEAEB2">Truffe telefoniche?</span><br>Risponde Vigilo.</h1>
-<p style="font-size:19px;line-height:1.45;font-weight:500">Tra chiamate commerciali e truffe sempre più credibili con l'AI, non vuoi più rispondere ai numeri sconosciuti? Ci pensa Vigilo: controlla chi è e ti passa la chiamata solo se l'hai autorizzata.</p>
-<a class="pill" href="#prezzi" style="background:#fff;color:#000;margin-top:12px">Proteggiti con Vigilo</a>
+<h1 class="rv" style="font-weight:700;font-size:48px;line-height:1.04;letter-spacing:-0.035em"><span style="color:#AEAEB2">Truffe telefoniche?</span><br>Risponde Vigilo.</h1>
+<p class="rv" style="--d:.12s;font-size:19px;line-height:1.45;font-weight:500">Tra chiamate commerciali e truffe sempre più credibili con l'AI, non vuoi più rispondere ai numeri sconosciuti? Ci pensa Vigilo: controlla chi è e ti passa la chiamata solo se l'hai autorizzata.</p>
+<a class="pill rv" href="#prezzi" style="--d:.24s;background:#fff;color:#000;margin-top:12px">Proteggiti con Vigilo</a>
 <div style="margin-top:36px;display:flex;justify-content:center;height:470px;overflow:hidden">
-<div style="width:300px;height:560px;border-radius:46px;background:#1C1C1E;padding:10px;transform:rotate(-4deg);transform-origin:center top">
+<div class="rv" style="--d:.3s;width:300px;height:560px;border-radius:46px;background:#1C1C1E;padding:10px;rotate:-4deg;transform-origin:center top">
 <div style="height:100%;border-radius:38px;background:linear-gradient(160deg,#FF5FA2 0%,#7B4DFF 45%,#2B6BFF 100%);padding:52px 14px 20px;display:flex;flex-direction:column;gap:10px">
 <div style="font-size:54px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1">10:42</div>
 <div style="font-size:14px;color:#fff;text-align:center;margin-bottom:14px;font-weight:500">martedì 6 ottobre</div>
-<div style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
+<div class="notif" id="n1" style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
 <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#3A3A3C;font-weight:600"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · ORA</div>
 <div style="font-weight:700;font-size:15px">Ho risposto io: studio dentistico</div>
 <div style="font-size:13px;color:#3A3A3C">Conferma l'appuntamento di giovedì alle 9:30.</div>
 </div>
-<div style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
+<div class="notif" id="n2" style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
 <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#B42318;font-weight:700"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>TRUFFA BLOCCATA · 8 MIN FA</div>
 <div style="font-weight:700;font-size:15px">Finta banca, chiedeva un codice</div>
 <div style="font-size:13px;color:#3A3A3C">Il numero non è della banca. Ho avvisato Luca.</div>
@@ -79,112 +99,94 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- CASO 1 -->
 <section class="sec" style="background:var(--violet);color:#fff">
-<div class="kicker" style="color:#E4DEFF">CASO 1 · LA VOCE CLONATA</div>
-<p style="font-size:21px;line-height:1.4;font-weight:600">Se i tuoi genitori ricevessero una chiamata così, con la tua voce, cosa farebbero?</p>
-<div class="bubble" style="background:#fff;color:var(--ink)">«Mamma, sono io. Mi servono 2.000 € subito.»</div>
-<h2 style="margin-top:12px">La voce si clona. La parola d'ordine no.</h2>
-<p style="font-size:18px;line-height:1.45">Imposta una parola d'ordine con Vigilo: così può controllare se si tratta davvero di voi.</p>
-<div class="answer" style="background:rgba(255,255,255,.14)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>Vigilo:</strong> ho chiesto la parola d'ordine di famiglia. Non la sapeva: ho chiuso e ti ho avvisato.</div></div>
+<div class="kicker rv-r" style="color:#E4DEFF">CASO 1 · LA VOCE CLONATA</div>
+<p class="rv-r" style="--d:.1s;font-size:21px;line-height:1.4;font-weight:600">Se i tuoi genitori ricevessero una chiamata così, con la tua voce, cosa farebbero?</p>
+<div class="bubble rv-r" data-type style="--d:.2s;background:#fff;color:var(--ink)"><span class="ghost">«Mamma, sono io. Mi servono 2.000 € subito.»</span><span class="typed"></span></div>
+<h2 class="rv-r" style="margin-top:12px">La voce si clona. La parola d'ordine no.</h2>
+<p class="rv-r" style="font-size:18px;line-height:1.45">Imposta una parola d'ordine con Vigilo: così può controllare se si tratta davvero di voi.</p>
+<div class="answer after" style="background:rgba(255,255,255,.14)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>Vigilo:</strong> ho chiesto la parola d'ordine di famiglia. Non la sapeva: ho chiuso e ti ho avvisato.</div></div>
 </section>
 
 <!-- CASO 2 -->
 <section class="sec" style="background:#000;color:#fff">
-<div class="kicker" style="color:#AEAEB2">CASO 2 · LA FINTA BANCA</div>
-<div class="bubble" style="background:#1C1C1E">«Buongiorno, la chiamo dall'ufficio sicurezza della sua banca. Ci serve il codice che le è appena arrivato via SMS.»</div>
-<h2 style="margin-top:12px">Una banca vera non ti chiede codici al telefono.</h2>
-<p style="font-size:18px;line-height:1.45;color:#E5E5EA">Vigilo controlla il numero e cosa ti stanno chiedendo. Se non torna, la chiamata non arriva a te.</p>
-<div class="answer" style="background:#1C1C1E"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><div><strong>Vigilo:</strong> il numero non risulta della tua banca e chiedeva un codice. Probabile truffa: ho chiuso.</div></div>
+<div class="kicker rv-r" style="color:#AEAEB2">CASO 2 · LA FINTA BANCA</div>
+<div class="bubble rv-r" data-type style="--d:.1s;background:#1C1C1E"><span class="ghost">«Buongiorno, la chiamo dall'ufficio sicurezza della sua banca. Ci serve il codice che le è appena arrivato via SMS.»</span><span class="typed"></span></div>
+<h2 class="rv-r" style="margin-top:12px">Una banca vera non ti chiede codici al telefono.</h2>
+<p class="rv-r" style="font-size:18px;line-height:1.45;color:#E5E5EA">Vigilo controlla il numero e cosa ti stanno chiedendo. Se non torna, la chiamata non arriva a te.</p>
+<div class="answer after" style="background:#1C1C1E"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><div><strong>Vigilo:</strong> il numero non risulta della tua banca e chiedeva un codice. Probabile truffa: ho chiuso.</div></div>
 </section>
 
 <!-- CASO 3 -->
 <section class="sec" style="background:var(--soft)">
-<div class="kicker" style="color:var(--muted)">CASO 3 · LA CHIAMATA COMMERCIALE</div>
-<div class="bubble" style="background:#fff">«Buongiorno, la chiamo per un'offerta luce e gas a lei riservata…»</div>
-<h2 style="margin-top:12px">Il telemarketing non ti interrompe più.</h2>
-<p style="font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo risponde, ringrazia e chiude. Se la chiamata è illecita, la segnala al Registro delle Opposizioni.</p>
-<div class="answer" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B3DF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Vigilo:</strong> offerta luce e gas, l'ho rifiutata. Non ti ho disturbato.</div></div>
+<div class="kicker rv-r" style="color:var(--muted)">CASO 3 · LA CHIAMATA COMMERCIALE</div>
+<div class="bubble rv-r" data-type style="--d:.1s;background:#fff"><span class="ghost">«Buongiorno, la chiamo per un'offerta luce e gas a lei riservata…»</span><span class="typed"></span></div>
+<h2 class="rv-r" style="margin-top:12px">Il telemarketing non ti interrompe più.</h2>
+<p class="rv-r" style="font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo risponde, ringrazia e chiude. Se la chiamata è illecita, la segnala al Registro delle Opposizioni.</p>
+<div class="answer after" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B3DF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Vigilo:</strong> offerta luce e gas, l'ho rifiutata. Non ti ho disturbato.</div></div>
 </section>
 
 <!-- COME FUNZIONA -->
 <section class="sec" id="come">
-<h2>Come funziona Vigilo?</h2>
+<h2 class="rv">Come funziona Vigilo?</h2>
 <div style="display:flex;flex-direction:column;gap:12px">
-<div class="step"><div class="n">1</div><div><h3>Chiama uno sconosciuto</h3><p>Il telefono resta in silenzio. Chi è in rubrica squilla come sempre.</p></div></div>
-<div class="step"><div class="n">2</div><div><h3>Risponde Vigilo</h3><p>«Buongiorno, sono l'assistente di Maria, chi parla?»</p></div></div>
-<div class="step"><div class="n">3</div><div><h3>Controlla chi è</h3><p>Verifica il numero, cosa chiede e, se si parla di soldi, la parola d'ordine.</p></div></div>
-<div class="step"><div class="n" style="background:var(--violet)">4</div><div><h3>Ti passa solo chi hai autorizzato</h3><p>Medico e corriere arrivano con un riassunto e il tasto per richiamare. Le truffe no, e la famiglia viene avvisata.</p></div></div>
+<div class="step rv-r"><div class="n">1</div><div><h3>Chiama uno sconosciuto</h3><p>Il telefono resta in silenzio. Chi è in rubrica squilla come sempre.</p></div></div>
+<div class="step rv-r" style="--d:.08s"><div class="n">2</div><div><h3>Risponde Vigilo</h3><p>«Buongiorno, sono l'assistente di Maria, chi parla?»</p></div></div>
+<div class="step rv-r" style="--d:.16s"><div class="n">3</div><div><h3>Controlla chi è</h3><p>Verifica il numero, cosa chiede e, se si parla di soldi, la parola d'ordine.</p></div></div>
+<div class="step rv-r" style="--d:.24s"><div class="n" style="background:var(--violet)">4</div><div><h3>Ti passa solo chi hai autorizzato</h3><p>Medico e corriere arrivano con un riassunto e il tasto per richiamare. Le truffe no, e la famiglia viene avvisata.</p></div></div>
 </div>
 </section>
 
-<!-- DATO -->
-<section style="background:#000;color:#fff;padding:64px 20px;display:flex;flex-direction:column;gap:16px">
-<div class="kicker" style="color:#AEAEB2">TRUFFE AL TELEFONO IN ITALIA</div>
-<div style="font-weight:800;font-size:76px;line-height:.95;letter-spacing:-0.05em">3,2 milioni</div>
-<div style="font-size:22px;font-weight:600;line-height:1.3">di italiani truffati al telefono, per 731 milioni di euro.</div>
-<div style="font-size:14px;color:#AEAEB2">Fonte: Corriere della Sera</div>
+<!-- TITOLO DI GIORNALE + 230 € -->
+<section style="background:#000;color:#fff;padding:72px 20px 40px;display:flex;flex-direction:column;gap:56px">
+<article class="rv-paper" style="background:#F7F5EF;color:#111;border-radius:6px;padding:22px 22px 26px;box-shadow:0 30px 60px rgba(0,0,0,.45);font-family:'Source Serif 4',Georgia,serif">
+<div style="display:flex;justify-content:space-between;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;color:#555;border-bottom:3px double #111;padding-bottom:8px">
+<span>CRONACA</span><span>TRUFFE</span>
+</div>
+<h2 style="margin-top:14px;font-family:'Source Serif 4',Georgia,serif;font-weight:800;font-size:31px;line-height:1.12;letter-spacing:-0.01em">Telefonia, 3,2 milioni di italiani truffati per 731 milioni di euro</h2>
+<div style="margin-top:14px;height:1px;background:#111;opacity:.25"></div>
+<div style="margin-top:10px;font-style:italic;font-size:15px;color:#444">Corriere della Sera</div>
+</article>
+
+<div style="display:flex;flex-direction:column;gap:6px">
+<div class="rv-pop" style="font-weight:800;font-size:112px;line-height:.9;letter-spacing:-0.06em;color:var(--coral)"><span id="count">230</span> €</div>
+<div class="rv" style="--d:.15s;font-size:28px;font-weight:700;letter-spacing:-0.02em">persi a testa.</div>
+<div class="rv" style="--d:.3s;font-size:19px;color:#C7C7CC;margin-top:10px">E il fenomeno è in peggioramento.</div>
+</div>
 </section>
 
-<!-- PREZZI -->
-<section id="prezzi" style="background:#000;color:#fff;padding:8px 20px 56px;display:flex;flex-direction:column;gap:20px">
-<div style="background:#1C1C1E;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px">
-<div style="font-size:17px;color:#E5E5EA">Chi è stato truffato ha perso in media</div>
-<div style="font-weight:800;font-size:44px;letter-spacing:-0.04em;line-height:1.05;color:var(--coral)">circa 230 €</div>
-<div style="font-size:17px;color:#E5E5EA">Vigilo costa 79 € l'anno. E ti fa risparmiare anche il tempo delle chiamate inutili.</div>
-</div>
-<h2 style="margin-top:16px">Un prezzo fisso. Zero costi a chiamata.</h2>
-<p style="font-size:17px;color:#C7C7CC">IVA inclusa. Disdici quando vuoi.</p>
+<!-- PAYWALL -->
+<section id="prezzi" style="background:#000;color:#fff;padding:32px 20px 64px;display:flex;flex-direction:column;gap:20px">
+<h2 class="rv">Un prezzo fisso.<br><span style="color:#AEAEB2">Per te o per tutta la tua famiglia.</span></h2>
+<p class="rv" style="--d:.1s;font-size:17px;color:#C7C7CC">Prezzi al mese, IVA inclusa. Disdici quando vuoi.</p>
 <div id="plans" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-<button type="button" class="plan" data-id="mensile" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700">Mensile</span><span class="muted">Senza vincoli</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">9,99 €</span><span class="muted">al mese</span></div></button>
-<button type="button" class="plan" data-id="annuale" aria-pressed="true"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Annuale</span><span class="badge">Il più scelto</span></div><span class="muted">6,58 € al mese · −34%</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">79 €</span><span class="muted">all'anno</span></div></button>
-<button type="button" class="plan" data-id="biennale" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Biennale</span><span class="badge">Miglior prezzo</span></div><span class="muted">5,38 € al mese · −46%</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">129 €</span><span class="muted">ogni 2 anni</span></div></button>
-<button type="button" class="plan" data-id="famiglia" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700">Famiglia</span><span class="muted">Fino a 5 persone</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">[—] €</span><span class="muted">all'anno</span></div></button>
+<button type="button" class="plan rv-r" data-id="solo" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700">Solo</span><span class="muted">1 account</span></div><div style="display:flex;flex-direction:column;align-items:flex-end;flex-shrink:0"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">9,99 €</span><span class="muted">al mese</span></div></button>
+<button type="button" class="plan rv-r" data-id="duo" aria-pressed="false" style="--d:.08s"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Duo</span><span class="badge">Tu e un genitore</span></div><span class="muted">2 account · 6,50 € ciascuno</span></div><div style="display:flex;flex-direction:column;align-items:flex-end;flex-shrink:0"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">12,99 €</span><span class="muted">al mese</span></div></button>
+<button type="button" class="plan rv-r" data-id="family" aria-pressed="true" style="--d:.16s"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Family</span><span class="badge">Più conveniente</span></div><span class="muted">4 account · 3,75 € ciascuno</span><span class="muted">+2 €/mese per account, fino a 4 in più</span></div><div style="display:flex;flex-direction:column;align-items:flex-end;flex-shrink:0"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">14,99 €</span><span class="muted">al mese</span></div></button>
 </div>
-<div style="margin-top:8px;border-radius:24px;padding:22px;background:#1C1C1E;display:flex;flex-direction:column;gap:10px">
-<div style="font-size:13px;font-weight:700;color:var(--coral);letter-spacing:0.04em">SOLO PRIMA DEL LANCIO</div>
-<div style="font-size:20px;font-weight:700">Founding member: 3 anni a 99 €</div>
-<div style="font-size:15px;color:#C7C7CC">Per i primi 2.000 iscritti. Il servizio parte a [MESE ANNO].</div>
-<a href="#abbonati" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1.5px solid #fff;color:#fff;font-weight:600;text-decoration:none">Prenota il posto</a>
+<a id="cta" class="pill rv" href="iscrizione.html?piano=family" style="align-self:stretch;margin-top:8px;background:#fff;color:#000">Continua con Family</a>
+<div class="rv" style="--d:.1s;display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;color:#E5E5EA">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+Bastano 2 minuti per attivarlo
 </div>
-</section>
-
-<!-- CHECKOUT -->
-<section class="sec" id="abbonati">
-<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font-weight:800;font-size:56px;letter-spacing:-0.05em;line-height:1">2 minuti</span><span style="font-size:17px;color:var(--muted)">per attivarlo</span></div>
-<h2 style="font-size:34px">Attiva Vigilo</h2>
-<div style="background:var(--soft);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;justify-content:space-between;gap:12px;font-size:17px;font-weight:700"><span id="selName">Vigilo Annuale</span><span id="selPrice">79 €</span></div>
-<div id="selSummary" style="font-size:15px;color:var(--muted)">1 persona, 12 mesi. Si rinnova a 79 € all'anno.</div>
-<a href="#prezzi" style="font-size:15px;font-weight:600;color:var(--violet)">Cambia piano</a>
-</div>
-<form onsubmit="event.preventDefault();document.getElementById('demo').hidden=false" style="display:flex;flex-direction:column;gap:20px">
-<div class="field"><label for="who">Chi vuoi proteggere?</label><select id="who"><option>Un genitore</option><option>Me stesso</option><option>Mio figlio o mia figlia</option><option>Tutta la famiglia</option></select></div>
-<div class="field"><label for="email">La tua email</label><input id="email" type="email" placeholder="nome@esempio.it"></div>
-<div class="field"><label for="phone">Numero da proteggere</label><input id="phone" type="tel" placeholder="+39 333 000 0000"></div>
-<label style="display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#3A3A3C"><input type="checkbox" style="width:22px;height:22px;margin:0;flex-shrink:0"> Ho letto l'informativa privacy e i termini del servizio.</label>
-<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:8px"><span style="font-size:18px;font-weight:600">Oggi paghi</span><span id="selPrice2" style="font-size:30px;font-weight:700;letter-spacing:-0.03em">79 €</span></div>
-<button type="submit" style="min-height:58px;border:0;border-radius:999px;background:#000;color:#fff;font:inherit;font-weight:600;font-size:19px;cursor:pointer">Continua al pagamento</button>
-<div id="demo" hidden style="background:var(--soft);border-radius:16px;padding:14px 16px;font-size:15px;color:var(--muted);text-align:center">Pagina di prova: il pagamento non è ancora attivo.</div>
-</form>
-<div style="display:flex;gap:8px;align-items:center;justify-content:center;font-size:14px;color:var(--muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#48484A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Carta, Apple Pay, Google Pay</div>
-<div style="font-size:14px;color:var(--muted);text-align:center">Soddisfatti o rimborsati entro [30] giorni.</div>
 </section>
 
 <!-- FAQ -->
 <section class="sec" id="faq" style="background:var(--soft);gap:16px">
-<h2 style="font-size:34px">Domande</h2>
+<h2 class="rv" style="font-size:34px">Domande</h2>
 <div style="display:flex;flex-direction:column;gap:8px">
-<details><summary>Funziona su iPhone?</summary><p>Sì. L'app ti guida passo passo, servono circa 2 minuti. Su Android è quasi automatico.</p></details>
-<details><summary>Devo cambiare numero o operatore?</summary><p>No. Funziona con il numero e l'operatore che hai già.</p></details>
-<details><summary>Registrate le chiamate?</summary><p>Non salviamo l'audio. Solo un riassunto scritto, cancellato dopo [X] giorni.</p></details>
-<details><summary>E se perdo una chiamata importante?</summary><p>Arriva subito come notifica, con chi era, cosa voleva e il tasto per richiamare.</p></details>
-<details><summary>Posso disdire?</summary><p>Sì, quando vuoi, dall'app. Il piano resta attivo fino alla fine del periodo pagato.</p></details>
+<details class="rv-r"><summary>Come proteggo anche i miei genitori?</summary><p>Con Duo o Family invii un invito dall'app. Il loro telefono si configura in circa 2 minuti, anche a distanza con il tuo aiuto.</p></details>
+<details class="rv-r" style="--d:.05s"><summary>Funziona su iPhone?</summary><p>Sì. L'app ti guida passo passo. Su Android è quasi automatico.</p></details>
+<details class="rv-r" style="--d:.1s"><summary>Devo cambiare numero o operatore?</summary><p>No. Funziona con il numero e l'operatore che hai già.</p></details>
+<details class="rv-r" style="--d:.15s"><summary>Registrate le chiamate?</summary><p>Non salviamo l'audio. Solo un riassunto scritto, cancellato dopo [X] giorni.</p></details>
+<details class="rv-r" style="--d:.2s"><summary>E se perdo una chiamata importante?</summary><p>Arriva subito come notifica, con chi era, cosa voleva e il tasto per richiamare.</p></details>
+<details class="rv-r" style="--d:.25s"><summary>Posso disdire?</summary><p>Sì, quando vuoi, dall'app. Il piano resta attivo fino alla fine del mese pagato.</p></details>
 </div>
 </section>
 
-<!-- SCUDO -->
-<section style="padding:72px 20px 64px;display:flex;flex-direction:column;gap:56px">
-<div style="display:flex;justify-content:center">
-<svg width="260" height="312" viewBox="0 0 200 240" role="img" aria-label="Lo scudo di Vigilo">
+<!-- SCUDO + CTA FINALE -->
+<section style="padding:72px 20px 64px;display:flex;flex-direction:column;gap:48px">
+<div class="rv-pop" style="display:flex;justify-content:center">
+<svg width="240" height="288" viewBox="0 0 200 240" role="img" aria-label="Lo scudo di Vigilo">
 <defs>
 <linearGradient id="vgRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.35" stop-color="#8E8E93"/><stop offset="0.6" stop-color="#F2F2F7"/><stop offset="1" stop-color="#48484A"/></linearGradient>
 <linearGradient id="vgFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5F7"/><stop offset="0.45" stop-color="#C7C7CC"/><stop offset="0.7" stop-color="#E5E5EA"/><stop offset="1" stop-color="#AEAEB2"/></linearGradient>
@@ -197,8 +199,8 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 </svg>
 </div>
 <div style="display:flex;flex-direction:column;gap:24px">
-<h2 style="font-size:40px">Proteggi chi ami in 2 minuti.</h2>
-<a class="pill" href="#abbonati" style="background:#1C1C1E;color:#fff;font-size:18px">Attiva Vigilo</a>
+<h2 class="rv" style="font-size:40px">Proteggi chi ami in 2 minuti.</h2>
+<a class="pill rv" href="#prezzi" style="--d:.1s;background:#1C1C1E;color:#fff;font-size:18px">Scegli il tuo piano</a>
 </div>
 </section>
 
@@ -210,22 +212,69 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 </div>
 
 <script>
-const PLANS = {
-  mensile:  { name: 'Mensile',  price: '9,99 €', summary: '1 persona. Si rinnova ogni mese.' },
-  annuale:  { name: 'Annuale',  price: '79 €',   summary: "1 persona, 12 mesi. Si rinnova a 79 € all'anno." },
-  biennale: { name: 'Biennale', price: '129 €',  summary: '1 persona, 24 mesi. Si rinnova a 129 € ogni 2 anni.' },
-  famiglia: { name: 'Famiglia', price: '[—] €',  summary: 'Fino a 5 persone, 12 mesi. Si rinnova ogni anno.' }
-};
-document.querySelectorAll('.plan').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.plan').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-    const p = PLANS[btn.dataset.id];
-    document.getElementById('selName').textContent = 'Vigilo ' + p.name;
-    document.getElementById('selPrice').textContent = p.price;
-    document.getElementById('selPrice2').textContent = p.price;
-    document.getElementById('selSummary').textContent = p.summary;
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Typing effect for call bubbles; the reply card slides in when typing ends
+  function type(bubble) {
+    var full = bubble.querySelector('.ghost').textContent;
+    var out = bubble.querySelector('.typed');
+    var answer = bubble.parentElement.querySelector('.after');
+    if (reduce) { out.textContent = full; if (answer) answer.classList.add('in'); return; }
+    var caret = document.createElement('span'); caret.className = 'caret';
+    var i = 0;
+    out.textContent = ''; out.appendChild(caret);
+    (function tick() {
+      i++;
+      out.textContent = full.slice(0, i); out.appendChild(caret);
+      if (i < full.length) {
+        var ch = full.charAt(i - 1);
+        setTimeout(tick, /[.,?!…]/.test(ch) ? 260 : 32 + Math.random() * 40);
+      } else {
+        setTimeout(function () { caret.remove(); if (answer) answer.classList.add('in'); }, 500);
+      }
+    })();
+  }
+
+  // Count-up for the loss figure
+  function countUp(el) {
+    var end = 230, t0 = null, dur = 1200;
+    if (reduce) { el.textContent = end; return; }
+    (function f(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(end * e);
+      if (p < 1) requestAnimationFrame(f);
+    })(performance.now());
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      el.classList.add('in');
+      if (el.hasAttribute('data-type')) setTimeout(function () { type(el); }, reduce ? 0 : 450);
+      if (el.querySelector && el.querySelector('#count')) countUp(document.getElementById('count'));
+      io.unobserve(el);
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rv,.rv-r,.rv-paper,.rv-pop').forEach(function (el) { io.observe(el); });
+
+  // Hero notifications drop in one after the other
+  setTimeout(function () { document.getElementById('n1').classList.add('in'); }, reduce ? 0 : 900);
+  setTimeout(function () { document.getElementById('n2').classList.add('in'); }, reduce ? 0 : 1700);
+
+  // Plan selection drives the CTA
+  var names = { solo: 'Solo', duo: 'Duo', family: 'Family' };
+  var cta = document.getElementById('cta');
+  document.querySelectorAll('.plan').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.plan').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      cta.textContent = 'Continua con ' + names[btn.dataset.id];
+      cta.href = 'iscrizione.html?piano=' + btn.dataset.id;
+    });
   });
-});
+})();
 </script>
 </body>
 </html>
