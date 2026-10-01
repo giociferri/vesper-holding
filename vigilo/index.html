@@ -42,10 +42,19 @@ h2{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.035em}
 .call{background:rgba(255,255,255,.95);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:8px;color:var(--ink)}
 .call-head{display:flex;align-items:center;gap:6px;font-size:12px;color:#3A3A3C;font-weight:700}
 .call-text{font-size:17px;font-weight:600;line-height:1.35}
-.call-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.act{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#E5E5EA;color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s}
+.call-actions{display:flex;gap:8px;margin-top:6px}
+.act{flex:1 1 0;min-width:0;min-height:48px;padding:6px 12px;border-radius:999px;border:0;background:#000;color:#fff;font:inherit;font-size:14px;font-weight:600;line-height:1.15;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-align:center;transition:transform .15s}
 .act:active{transform:scale(.96)}
-.act-main{background:#000;color:#fff}
+.act-call{background:#FF7A2F;color:#0A0A0A}
+.act-call svg{flex-shrink:0}
+.reply{display:flex;gap:8px;align-items:center;margin-top:4px;padding:4px 4px 4px 14px;border-radius:999px;background:#F2F2F7}
+.reply input{flex:1;min-width:0;min-height:40px;border:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);outline:none}
+.reply input::placeholder{color:#6E6E73}
+.reply button{flex-shrink:0;width:40px;height:40px;border-radius:999px;border:0;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+.reply button:active{transform:scale(.92)}
+.reply:focus-within{box-shadow:0 0 0 2px var(--violet)}
+.sent{align-self:flex-end;max-width:85%;margin-top:4px;padding:10px 14px;border-radius:18px 18px 6px 18px;background:var(--violet);color:#fff;font-size:15px;font-weight:600;animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .call-done{display:flex;align-items:center;gap:8px;min-height:44px;margin-top:6px;font-size:15px;font-weight:700;color:var(--violet);animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
 @keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 details{background:#fff;border-radius:18px;padding:18px 20px}
@@ -155,24 +164,39 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 <section class="sec">
 <div class="kicker rv-r" style="color:var(--violet)">QUANDO TI CERCANO DAVVERO</div>
 <h2 class="rv-r" style="--d:.08s">E se è una chiamata importante?</h2>
-<p class="rv-r" style="--d:.16s;font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo ti dice chi è e cosa vuole. Tu decidi con un tocco.</p>
+<p class="rv-r" style="--d:.16s;font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo ti dice chi è e cosa vuole. Tu decidi con un tocco, o gli dici al volo cosa rispondere.</p>
 <div style="margin-top:8px;border-radius:32px;padding:18px;background:linear-gradient(160deg,#FF5FA2 0%,#7B4DFF 45%,#2B6BFF 100%);display:flex;flex-direction:column;gap:12px">
-<div class="call rv-r" style="--d:.1s">
+
+<div class="call rv-r" id="demoCall" style="--d:.1s">
 <div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · ORA</div>
-<div class="call-text">Chiamano dallo studio medico per confermare l'appuntamento di giovedì alle 9:30.</div>
+<div class="call-text">È un cliente che vorrebbe un intervento in via Garibaldi per un tubo rotto.</div>
 <div class="call-actions">
-<button type="button" class="act act-main" data-done="Appuntamento confermato">Conferma appuntamento</button>
-<button type="button" class="act" data-done="Ti passo la chiamata…">Passami la chiamata</button>
-</div>
-</div>
-<div class="call rv-r" style="--d:.3s">
-<div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · 2 MIN FA</div>
-<div class="call-text">È un cliente che vorrebbe un intervento in via Garibaldi, a Genova.</div>
-<div class="call-actions">
-<button type="button" class="act act-main" data-done="Ti passo la chiamata…">Passami la chiamata</button>
 <button type="button" class="act" data-done="Gli ho detto che lo richiami">Richiamo io</button>
+<button type="button" class="act act-call" data-done="Ti passo la chiamata…"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Passami la chiamata</button>
 </div>
+<form class="reply"><label class="sr" for="r1">Messaggio per chi chiama</label><input id="r1" type="text" placeholder="Digli al volo cosa rispondere…" autocomplete="off"><button type="submit" aria-label="Invia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button></form>
 </div>
+
+<div class="call rv-r" style="--d:.2s">
+<div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · 20 MIN FA</div>
+<div class="call-text">Dallo studio medico chiedono conferma per l'appuntamento di giovedì ore 9.30.</div>
+<div class="call-actions">
+<button type="button" class="act" data-done="Appuntamento confermato">Conferma appuntamento</button>
+<button type="button" class="act act-call" data-done="Ti passo la chiamata…"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Passami la chiamata</button>
+</div>
+<form class="reply"><label class="sr" for="r2">Messaggio per chi chiama</label><input id="r2" type="text" placeholder="Digli al volo cosa rispondere…" autocomplete="off"><button type="submit" aria-label="Invia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button></form>
+</div>
+
+<div class="call rv-r" style="--d:.3s">
+<div class="call-head"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · 1 ORA FA</div>
+<div class="call-text">È il corriere: ha un pacco per te ma non c'è nessuno in casa. Chiede dove lasciarlo.</div>
+<div class="call-actions">
+<button type="button" class="act" data-done="Gli ho detto di lasciarlo in portineria">Lascialo in portineria</button>
+<button type="button" class="act act-call" data-done="Ti passo la chiamata…"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Passami la chiamata</button>
+</div>
+<form class="reply"><label class="sr" for="r3">Messaggio per chi chiama</label><input id="r3" type="text" placeholder="Digli al volo cosa rispondere…" autocomplete="off"><button type="submit" aria-label="Invia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button></form>
+</div>
+
 </div>
 </section>
 
@@ -319,17 +343,49 @@ Bastano 2 minuti per attivarlo
   setTimeout(function () { document.getElementById('n2').classList.add('in'); }, reduce ? 0 : 1700);
 
   // Call actions: tap a button, the card shows the outcome
-  document.querySelectorAll('.call .act').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var row = btn.parentElement;
-      var done = document.createElement('div');
-      done.className = 'call-done';
-      done.setAttribute('role', 'status');
-      done.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
-      done.appendChild(document.createTextNode(btn.dataset.done));
-      row.replaceWith(done);
+  var CHECK = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
+  function settle(card, text, sentMsg) {
+    if (card.dataset.settled) return;
+    card.dataset.settled = '1';
+    var actions = card.querySelector('.call-actions'), form = card.querySelector('.reply');
+    if (sentMsg) {
+      var b = document.createElement('div'); b.className = 'sent'; b.textContent = sentMsg;
+      form.replaceWith(b);
+    } else { form.remove(); }
+    var done = document.createElement('div');
+    done.className = 'call-done'; done.setAttribute('role', 'status');
+    done.innerHTML = CHECK; done.appendChild(document.createTextNode(text));
+    actions.replaceWith(done);
+  }
+  document.querySelectorAll('.call').forEach(function (card) {
+    card.querySelectorAll('.act').forEach(function (btn) {
+      btn.addEventListener('click', function () { settle(card, btn.dataset.done); });
+    });
+    card.querySelector('.reply').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = card.querySelector('.reply input').value.trim();
+      if (v) settle(card, 'Vigilo gliel’ha detto', v);
     });
   });
+
+  // Demo: on the first card the user types a quick reply and sends it
+  var demo = document.getElementById('demoCall');
+  var demoIO = new IntersectionObserver(function (en) {
+    if (!en[0].isIntersecting) return;
+    demoIO.disconnect();
+    var input = demo.querySelector('.reply input'), msg = 'Digli che vado fra 1 ora', i = 0;
+    if (reduce) { input.value = msg; setTimeout(function () { settle(demo, 'Vigilo gliel’ha detto', msg); }, 600); return; }
+    setTimeout(function step() {
+      if (demo.dataset.settled || document.activeElement === input) return;
+      input.value = msg.slice(0, ++i);
+      if (i < msg.length) setTimeout(step, 55 + Math.random() * 45);
+      else setTimeout(function () {
+        var b = demo.querySelector('.reply button'); b.style.transform = 'scale(.88)';
+        setTimeout(function () { settle(demo, 'Vigilo gliel’ha detto', msg); }, 180);
+      }, 700);
+    }, 1400);
+  }, { threshold: 0.6 });
+  demoIO.observe(demo);
 
   // Plan selection drives the CTA
   var names = { solo: 'Solo', duo: 'Duo', family: 'Family' };
