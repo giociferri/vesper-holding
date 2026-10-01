@@ -354,7 +354,7 @@ Bastano 2 minuti per attivarlo
     var done = document.createElement('div');
     done.className = 'call-done'; done.setAttribute('role', 'status');
     done.innerHTML = CHECK; done.appendChild(document.createTextNode(text));
-    actions.replaceWith(done);
+    if (sentMsg) { actions.remove(); card.appendChild(done); } else { actions.replaceWith(done); }
   }
   document.querySelectorAll('.call').forEach(function (card) {
     card.querySelectorAll('.act').forEach(function (btn) {
