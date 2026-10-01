@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vigilo · Truffe telefoniche? Risponde Vigilo.</title>
+<meta name="description" content="Vigilo risponde ai numeri sconosciuti al posto tuo, controlla chi è e ti passa solo le chiamate autorizzate.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A0A0A;--muted:#48484A;--soft:#F2F2F7;--violet:#5B3DF5;--coral:#FF8A5B}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;color:var(--ink);font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:17px;line-height:1.5}
+a{color:#000}a:hover{color:var(--violet)}
+.wrap{max-width:480px;margin:0 auto;overflow:hidden}
+.sec{padding:56px 20px;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3,p{margin:0}
+h2{font-weight:700;font-size:38px;line-height:1.05;letter-spacing:-0.035em}
+.kicker{font-size:13px;font-weight:700;letter-spacing:0.08em}
+.bubble{border-radius:24px 24px 24px 6px;padding:20px 22px;font-size:20px;font-weight:600;line-height:1.35}
+.answer{border-radius:20px;padding:18px 20px;display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.45}
+.answer svg{flex-shrink:0;margin-top:2px}
+.pill{display:inline-flex;align-items:center;min-height:56px;padding:0 28px;border-radius:999px;font-weight:600;font-size:19px;text-decoration:none;align-self:flex-start}
+.step{background:var(--soft);border-radius:24px;padding:22px;display:flex;gap:16px;align-items:flex-start}
+.step .n{flex-shrink:0;width:44px;height:44px;border-radius:999px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step h3{font-size:19px;font-weight:700}
+.step p{font-size:16px;color:var(--muted);margin-top:4px}
+.plan{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;cursor:pointer;padding:20px;border-radius:22px;min-height:88px;background:#1C1C1E;color:#fff;border:2px solid #3A3A3C}
+.plan .muted{font-size:14px;color:#AEAEB2}
+.plan .badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:#3A3A3C;color:#fff}
+.plan[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.plan[aria-pressed="true"] .muted{color:var(--muted)}
+.plan[aria-pressed="true"] .badge{background:var(--violet)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:15px;font-weight:600}
+.field input,.field select{min-height:52px;border-radius:14px;border:1.5px solid #C7C7CC;padding:0 14px;font:inherit;background:#fff;color:var(--ink)}
+details{background:#fff;border-radius:18px;padding:18px 20px}
+summary{font-weight:600;font-size:17px;cursor:pointer}
+details p{margin-top:10px;color:var(--muted);font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+
+<header style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px">
+<a href="#top" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)">
+<svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>
+<span style="font-weight:800;font-size:28px;letter-spacing:-0.04em">Vigilo</span>
+</a>
+<a href="#prezzi" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#000;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Abbonati</a>
+</header>
+
+<!-- HERO -->
+<section style="background:#000;color:#fff;padding:48px 20px 0;display:flex;flex-direction:column;gap:20px">
+<h1 style="font-weight:700;font-size:48px;line-height:1.04;letter-spacing:-0.035em"><span style="color:#AEAEB2">Truffe telefoniche?</span><br>Risponde Vigilo.</h1>
+<p style="font-size:19px;line-height:1.45;font-weight:500">Tra chiamate commerciali e truffe sempre più credibili con l'AI, non vuoi più rispondere ai numeri sconosciuti? Ci pensa Vigilo: controlla chi è e ti passa la chiamata solo se l'hai autorizzata.</p>
+<a class="pill" href="#prezzi" style="background:#fff;color:#000;margin-top:12px">Proteggiti con Vigilo</a>
+<div style="margin-top:36px;display:flex;justify-content:center;height:470px;overflow:hidden">
+<div style="width:300px;height:560px;border-radius:46px;background:#1C1C1E;padding:10px;transform:rotate(-4deg);transform-origin:center top">
+<div style="height:100%;border-radius:38px;background:linear-gradient(160deg,#FF5FA2 0%,#7B4DFF 45%,#2B6BFF 100%);padding:52px 14px 20px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:54px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.03em;line-height:1">10:42</div>
+<div style="font-size:14px;color:#fff;text-align:center;margin-bottom:14px;font-weight:500">martedì 6 ottobre</div>
+<div style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
+<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#3A3A3C;font-weight:600"><svg width="14" height="14" viewBox="0 0 32 32" fill="none" stroke="#0A0A0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg>VIGILO · ORA</div>
+<div style="font-weight:700;font-size:15px">Ho risposto io: studio dentistico</div>
+<div style="font-size:13px;color:#3A3A3C">Conferma l'appuntamento di giovedì alle 9:30.</div>
+</div>
+<div style="background:rgba(255,255,255,.92);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--ink)">
+<div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#B42318;font-weight:700"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg>TRUFFA BLOCCATA · 8 MIN FA</div>
+<div style="font-weight:700;font-size:15px">Finta banca, chiedeva un codice</div>
+<div style="font-size:13px;color:#3A3A3C">Il numero non è della banca. Ho avvisato Luca.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CASO 1 -->
+<section class="sec" style="background:var(--violet);color:#fff">
+<div class="kicker" style="color:#E4DEFF">CASO 1 · LA VOCE CLONATA</div>
+<p style="font-size:21px;line-height:1.4;font-weight:600">Se i tuoi genitori ricevessero una chiamata così, con la tua voce, cosa farebbero?</p>
+<div class="bubble" style="background:#fff;color:var(--ink)">«Mamma, sono io. Mi servono 2.000 € subito.»</div>
+<h2 style="margin-top:12px">La voce si clona. La parola d'ordine no.</h2>
+<p style="font-size:18px;line-height:1.45">Imposta una parola d'ordine con Vigilo: così può controllare se si tratta davvero di voi.</p>
+<div class="answer" style="background:rgba(255,255,255,.14)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>Vigilo:</strong> ho chiesto la parola d'ordine di famiglia. Non la sapeva: ho chiuso e ti ho avvisato.</div></div>
+</section>
+
+<!-- CASO 2 -->
+<section class="sec" style="background:#000;color:#fff">
+<div class="kicker" style="color:#AEAEB2">CASO 2 · LA FINTA BANCA</div>
+<div class="bubble" style="background:#1C1C1E">«Buongiorno, la chiamo dall'ufficio sicurezza della sua banca. Ci serve il codice che le è appena arrivato via SMS.»</div>
+<h2 style="margin-top:12px">Una banca vera non ti chiede codici al telefono.</h2>
+<p style="font-size:18px;line-height:1.45;color:#E5E5EA">Vigilo controlla il numero e cosa ti stanno chiedendo. Se non torna, la chiamata non arriva a te.</p>
+<div class="answer" style="background:#1C1C1E"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg><div><strong>Vigilo:</strong> il numero non risulta della tua banca e chiedeva un codice. Probabile truffa: ho chiuso.</div></div>
+</section>
+
+<!-- CASO 3 -->
+<section class="sec" style="background:var(--soft)">
+<div class="kicker" style="color:var(--muted)">CASO 3 · LA CHIAMATA COMMERCIALE</div>
+<div class="bubble" style="background:#fff">«Buongiorno, la chiamo per un'offerta luce e gas a lei riservata…»</div>
+<h2 style="margin-top:12px">Il telemarketing non ti interrompe più.</h2>
+<p style="font-size:18px;line-height:1.45;color:#3A3A3C">Vigilo risponde, ringrazia e chiude. Se la chiamata è illecita, la segnala al Registro delle Opposizioni.</p>
+<div class="answer" style="background:#fff"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B3DF5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Vigilo:</strong> offerta luce e gas, l'ho rifiutata. Non ti ho disturbato.</div></div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="sec" id="come">
+<h2>Come funziona Vigilo?</h2>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="step"><div class="n">1</div><div><h3>Chiama uno sconosciuto</h3><p>Il telefono resta in silenzio. Chi è in rubrica squilla come sempre.</p></div></div>
+<div class="step"><div class="n">2</div><div><h3>Risponde Vigilo</h3><p>«Buongiorno, sono l'assistente di Maria, chi parla?»</p></div></div>
+<div class="step"><div class="n">3</div><div><h3>Controlla chi è</h3><p>Verifica il numero, cosa chiede e, se si parla di soldi, la parola d'ordine.</p></div></div>
+<div class="step"><div class="n" style="background:var(--violet)">4</div><div><h3>Ti passa solo chi hai autorizzato</h3><p>Medico e corriere arrivano con un riassunto e il tasto per richiamare. Le truffe no, e la famiglia viene avvisata.</p></div></div>
+</div>
+</section>
+
+<!-- DATO -->
+<section style="background:#000;color:#fff;padding:64px 20px;display:flex;flex-direction:column;gap:16px">
+<div class="kicker" style="color:#AEAEB2">TRUFFE AL TELEFONO IN ITALIA</div>
+<div style="font-weight:800;font-size:76px;line-height:.95;letter-spacing:-0.05em">3,2 milioni</div>
+<div style="font-size:22px;font-weight:600;line-height:1.3">di italiani truffati al telefono, per 731 milioni di euro.</div>
+<div style="font-size:14px;color:#AEAEB2">Fonte: Corriere della Sera</div>
+</section>
+
+<!-- PREZZI -->
+<section id="prezzi" style="background:#000;color:#fff;padding:8px 20px 56px;display:flex;flex-direction:column;gap:20px">
+<div style="background:#1C1C1E;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:17px;color:#E5E5EA">Chi è stato truffato ha perso in media</div>
+<div style="font-weight:800;font-size:44px;letter-spacing:-0.04em;line-height:1.05;color:var(--coral)">circa 230 €</div>
+<div style="font-size:17px;color:#E5E5EA">Vigilo costa 79 € l'anno. E ti fa risparmiare anche il tempo delle chiamate inutili.</div>
+</div>
+<h2 style="margin-top:16px">Un prezzo fisso. Zero costi a chiamata.</h2>
+<p style="font-size:17px;color:#C7C7CC">IVA inclusa. Disdici quando vuoi.</p>
+<div id="plans" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+<button type="button" class="plan" data-id="mensile" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700">Mensile</span><span class="muted">Senza vincoli</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">9,99 €</span><span class="muted">al mese</span></div></button>
+<button type="button" class="plan" data-id="annuale" aria-pressed="true"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Annuale</span><span class="badge">Il più scelto</span></div><span class="muted">6,58 € al mese · −34%</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">79 €</span><span class="muted">all'anno</span></div></button>
+<button type="button" class="plan" data-id="biennale" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:18px;font-weight:700">Biennale</span><span class="badge">Miglior prezzo</span></div><span class="muted">5,38 € al mese · −46%</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">129 €</span><span class="muted">ogni 2 anni</span></div></button>
+<button type="button" class="plan" data-id="famiglia" aria-pressed="false"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:700">Famiglia</span><span class="muted">Fino a 5 persone</span></div><div style="display:flex;flex-direction:column;align-items:flex-end"><span style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.1">[—] €</span><span class="muted">all'anno</span></div></button>
+</div>
+<div style="margin-top:8px;border-radius:24px;padding:22px;background:#1C1C1E;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:13px;font-weight:700;color:var(--coral);letter-spacing:0.04em">SOLO PRIMA DEL LANCIO</div>
+<div style="font-size:20px;font-weight:700">Founding member: 3 anni a 99 €</div>
+<div style="font-size:15px;color:#C7C7CC">Per i primi 2.000 iscritti. Il servizio parte a [MESE ANNO].</div>
+<a href="#abbonati" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;border:1.5px solid #fff;color:#fff;font-weight:600;text-decoration:none">Prenota il posto</a>
+</div>
+</section>
+
+<!-- CHECKOUT -->
+<section class="sec" id="abbonati">
+<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font-weight:800;font-size:56px;letter-spacing:-0.05em;line-height:1">2 minuti</span><span style="font-size:17px;color:var(--muted)">per attivarlo</span></div>
+<h2 style="font-size:34px">Attiva Vigilo</h2>
+<div style="background:var(--soft);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:17px;font-weight:700"><span id="selName">Vigilo Annuale</span><span id="selPrice">79 €</span></div>
+<div id="selSummary" style="font-size:15px;color:var(--muted)">1 persona, 12 mesi. Si rinnova a 79 € all'anno.</div>
+<a href="#prezzi" style="font-size:15px;font-weight:600;color:var(--violet)">Cambia piano</a>
+</div>
+<form onsubmit="event.preventDefault();document.getElementById('demo').hidden=false" style="display:flex;flex-direction:column;gap:20px">
+<div class="field"><label for="who">Chi vuoi proteggere?</label><select id="who"><option>Un genitore</option><option>Me stesso</option><option>Mio figlio o mia figlia</option><option>Tutta la famiglia</option></select></div>
+<div class="field"><label for="email">La tua email</label><input id="email" type="email" placeholder="nome@esempio.it"></div>
+<div class="field"><label for="phone">Numero da proteggere</label><input id="phone" type="tel" placeholder="+39 333 000 0000"></div>
+<label style="display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#3A3A3C"><input type="checkbox" style="width:22px;height:22px;margin:0;flex-shrink:0"> Ho letto l'informativa privacy e i termini del servizio.</label>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:8px"><span style="font-size:18px;font-weight:600">Oggi paghi</span><span id="selPrice2" style="font-size:30px;font-weight:700;letter-spacing:-0.03em">79 €</span></div>
+<button type="submit" style="min-height:58px;border:0;border-radius:999px;background:#000;color:#fff;font:inherit;font-weight:600;font-size:19px;cursor:pointer">Continua al pagamento</button>
+<div id="demo" hidden style="background:var(--soft);border-radius:16px;padding:14px 16px;font-size:15px;color:var(--muted);text-align:center">Pagina di prova: il pagamento non è ancora attivo.</div>
+</form>
+<div style="display:flex;gap:8px;align-items:center;justify-content:center;font-size:14px;color:var(--muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#48484A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Carta, Apple Pay, Google Pay</div>
+<div style="font-size:14px;color:var(--muted);text-align:center">Soddisfatti o rimborsati entro [30] giorni.</div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:var(--soft);gap:16px">
+<h2 style="font-size:34px">Domande</h2>
+<div style="display:flex;flex-direction:column;gap:8px">
+<details><summary>Funziona su iPhone?</summary><p>Sì. L'app ti guida passo passo, servono circa 2 minuti. Su Android è quasi automatico.</p></details>
+<details><summary>Devo cambiare numero o operatore?</summary><p>No. Funziona con il numero e l'operatore che hai già.</p></details>
+<details><summary>Registrate le chiamate?</summary><p>Non salviamo l'audio. Solo un riassunto scritto, cancellato dopo [X] giorni.</p></details>
+<details><summary>E se perdo una chiamata importante?</summary><p>Arriva subito come notifica, con chi era, cosa voleva e il tasto per richiamare.</p></details>
+<details><summary>Posso disdire?</summary><p>Sì, quando vuoi, dall'app. Il piano resta attivo fino alla fine del periodo pagato.</p></details>
+</div>
+</section>
+
+<!-- SCUDO -->
+<section style="padding:72px 20px 64px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;justify-content:center">
+<svg width="260" height="312" viewBox="0 0 200 240" role="img" aria-label="Lo scudo di Vigilo">
+<defs>
+<linearGradient id="vgRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.35" stop-color="#8E8E93"/><stop offset="0.6" stop-color="#F2F2F7"/><stop offset="1" stop-color="#48484A"/></linearGradient>
+<linearGradient id="vgFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F5F7"/><stop offset="0.45" stop-color="#C7C7CC"/><stop offset="0.7" stop-color="#E5E5EA"/><stop offset="1" stop-color="#AEAEB2"/></linearGradient>
+<linearGradient id="vgMark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C1C1E"/><stop offset="0.55" stop-color="#3A3A3C"/><stop offset="1" stop-color="#8E8E93"/></linearGradient>
+</defs>
+<path d="M18 16Q18 6 28 6H172Q182 6 182 16V150Q182 162 172 169L108 216Q100 222 92 216L28 169Q18 162 18 150Z" fill="url(#vgRim)"/>
+<path d="M26 20Q26 13 33 13H167Q174 13 174 20V148Q174 157 166 163L106 207Q100 211 94 207L34 163Q26 157 26 148Z" fill="url(#vgFace)"/>
+<path d="M58 58H86L100 116L114 58H142L112 164H88Z" fill="url(#vgMark)"/>
+<path d="M58 58H86L100 116L114 58H142L141 62H117L100 128L83 62H59Z" fill="#FFFFFF" opacity="0.35"/>
+</svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="font-size:40px">Proteggi chi ami in 2 minuti.</h2>
+<a class="pill" href="#abbonati" style="background:#1C1C1E;color:#fff;font-size:18px">Attiva Vigilo</a>
+</div>
+</section>
+
+<footer style="background:#000;color:#C7C7CC;padding:40px 20px 48px;display:flex;flex-direction:column;gap:20px;font-size:14px">
+<div style="display:flex;align-items:center;gap:8px;color:#fff"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h20v11c0 6-4.5 9.5-10 12-5.5-2.5-10-6-10-12z"/><path d="M11.5 11l4.5 9 4.5-9"/></svg><span style="font-weight:800;font-size:22px;letter-spacing:-0.04em">Vigilo</span></div>
+<div style="display:flex;gap:20px;flex-wrap:wrap"><a href="#faq" style="color:#fff">Domande</a><a href="#prezzi" style="color:#fff">Prezzi</a></div>
+<div>Pagina di prova · [Ragione sociale] · P.IVA [—]</div>
+</footer>
+</div>
+
+<script>
+const PLANS = {
+  mensile:  { name: 'Mensile',  price: '9,99 €', summary: '1 persona. Si rinnova ogni mese.' },
+  annuale:  { name: 'Annuale',  price: '79 €',   summary: "1 persona, 12 mesi. Si rinnova a 79 € all'anno." },
+  biennale: { name: 'Biennale', price: '129 €',  summary: '1 persona, 24 mesi. Si rinnova a 129 € ogni 2 anni.' },
+  famiglia: { name: 'Famiglia', price: '[—] €',  summary: 'Fino a 5 persone, 12 mesi. Si rinnova ogni anno.' }
+};
+document.querySelectorAll('.plan').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.plan').forEach((b) => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+    const p = PLANS[btn.dataset.id];
+    document.getElementById('selName').textContent = 'Vigilo ' + p.name;
+    document.getElementById('selPrice').textContent = p.price;
+    document.getElementById('selPrice2').textContent = p.price;
+    document.getElementById('selSummary').textContent = p.summary;
+  });
+});
+</script>
+</body>
+</html>
