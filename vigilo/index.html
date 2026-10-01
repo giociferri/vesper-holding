@@ -46,17 +46,31 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 /* scroll effects */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
 .js .rv-r{opacity:0;transform:translateX(80px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
-.js .rv-paper{opacity:0;transform:translateX(110%) rotate(6deg);transition:opacity .6s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+/* newspaper clipping */
+.paper-slot{perspective:900px;padding:8px 4px}
+.paper{position:relative;color:#1A1712;font-family:'Source Serif 4',Georgia,serif;padding:22px 20px 34px;transform:rotate(-2deg);
+  background-color:#EFE9DA;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),radial-gradient(ellipse at 90% 100%,rgba(120,95,50,.18),transparent 55%);
+  box-shadow:0 2px 0 rgba(0,0,0,.08),0 26px 50px rgba(0,0,0,.55);
+  clip-path:polygon(0 1%,6% 0,14% 1.2%,23% .2%,31% 1%,40% 0,52% 1.1%,61% .3%,70% 1%,81% 0,90% 1.2%,100% .4%,99.4% 18%,100% 37%,99.2% 55%,100% 74%,99.5% 100%,90% 98.6%,80% 100%,71% 98.8%,60% 100%,50% 98.5%,39% 99.8%,29% 98.7%,18% 100%,9% 98.9%,0 100%,.6% 80%,0 61%,.7% 42%,0 22%)}
+.paper-top{display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.18em;border-top:1px solid #1A1712;border-bottom:3px double #1A1712;padding:6px 0}
+.paper-h{margin-top:14px;font-family:'Source Serif 4',Georgia,serif;font-weight:800;font-size:32px;line-height:1.08;letter-spacing:-0.015em}
+.paper-sub{margin-top:10px;font-style:italic;font-size:16px;line-height:1.35;color:#4A4234}
+.paper-cols{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid rgba(26,23,18,.35);padding-top:12px}
+.paper-cols div{display:flex;flex-direction:column;gap:7px}
+.paper-cols i{display:block;height:5px;width:100%;background:rgba(26,23,18,.22);border-radius:1px}
+.paper-src{margin-top:16px;font-size:13px;font-style:italic;color:#4A4234}
+.js .paper-slot .paper{opacity:0;transform:translateY(-40px) rotateX(35deg) rotate(8deg) scale(1.15);transition:opacity .5s ease,transform 1s cubic-bezier(.2,1.25,.35,1)}
+.js .paper-slot.in .paper{opacity:1;transform:rotate(-2deg)}
 .js .rv-pop{opacity:0;transform:scale(.85);transition:opacity .6s ease,transform .7s cubic-bezier(.2,1.4,.4,1);transition-delay:var(--d,0s)}
 .js .rv.in,.js .rv-r.in,.js .rv-pop.in{opacity:1;transform:none}
-.js .rv-paper.in{opacity:1;transform:rotate(-1.5deg)}
 .js .after{opacity:0;transform:translateX(60px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .js .after.in{opacity:1;transform:none}
 .js .notif{opacity:0;transform:translateY(-24px) scale(.96);transition:opacity .6s ease,transform .7s cubic-bezier(.2,1.2,.4,1)}
 .js .notif.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
-  .js .rv,.js .rv-r,.js .rv-paper,.js .rv-pop,.js .after,.js .notif{opacity:1;transform:none;transition:none}
-  .js .rv-paper{transform:rotate(-1.5deg)}
+  .js .rv,.js .rv-r,.js .rv-pop,.js .after,.js .notif{opacity:1;transform:none;transition:none}
+  .js .paper-slot .paper{opacity:1;transform:rotate(-2deg);transition:none}
   .caret{display:none}
 }
 </style>
@@ -138,14 +152,17 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 
 <!-- TITOLO DI GIORNALE + 230 € -->
 <section style="background:#000;color:#fff;padding:72px 20px 40px;display:flex;flex-direction:column;gap:56px">
-<article class="rv-paper" style="background:#F7F5EF;color:#111;border-radius:6px;padding:22px 22px 26px;box-shadow:0 30px 60px rgba(0,0,0,.45);font-family:'Source Serif 4',Georgia,serif">
-<div style="display:flex;justify-content:space-between;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;color:#555;border-bottom:3px double #111;padding-bottom:8px">
-<span>CRONACA</span><span>TRUFFE</span>
+<div class="paper-slot">
+<article class="paper">
+<div class="paper-top"><span>CRONACA</span><span>MARTEDÌ</span></div>
+<h2 class="paper-h">Telefonia, 3,2 milioni di italiani truffati per 731 milioni di euro</h2>
+<div class="paper-cols" aria-hidden="true">
+<div><i></i><i></i><i></i><i></i><i></i><i></i><i style="width:60%"></i></div>
+<div><i></i><i></i><i></i><i></i><i></i><i></i><i style="width:40%"></i></div>
 </div>
-<h2 style="margin-top:14px;font-family:'Source Serif 4',Georgia,serif;font-weight:800;font-size:31px;line-height:1.12;letter-spacing:-0.01em">Telefonia, 3,2 milioni di italiani truffati per 731 milioni di euro</h2>
-<div style="margin-top:14px;height:1px;background:#111;opacity:.25"></div>
-<div style="margin-top:10px;font-style:italic;font-size:15px;color:#444">Corriere della Sera</div>
+<div class="paper-src">Fonte: Corriere della Sera</div>
 </article>
+</div>
 
 <div style="display:flex;flex-direction:column;gap:6px">
 <div class="rv-pop" style="font-weight:800;font-size:112px;line-height:.9;letter-spacing:-0.06em;color:var(--coral)"><span id="count">230</span> €</div>
@@ -258,7 +275,7 @@ Bastano 2 minuti per attivarlo
       io.unobserve(el);
     });
   }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.rv,.rv-r,.rv-paper,.rv-pop').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.rv,.rv-r,.paper-slot,.rv-pop').forEach(function (el) { io.observe(el); });
 
   // Hero notifications drop in one after the other
   setTimeout(function () { document.getElementById('n1').classList.add('in'); }, reduce ? 0 : 900);
