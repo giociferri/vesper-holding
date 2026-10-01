@@ -46,20 +46,15 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 /* scroll effects */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
 .js .rv-r{opacity:0;transform:translateX(80px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
-/* newspaper clipping */
-.paper-slot{perspective:900px;padding:8px 4px}
-.paper{position:relative;color:#1A1712;font-family:'Source Serif 4',Georgia,serif;padding:22px 20px 34px;transform:rotate(-2deg);
-  background-color:#EFE9DA;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),radial-gradient(ellipse at 90% 100%,rgba(120,95,50,.18),transparent 55%);
-  box-shadow:0 2px 0 rgba(0,0,0,.08),0 26px 50px rgba(0,0,0,.55);
-  clip-path:polygon(0 1%,6% 0,14% 1.2%,23% .2%,31% 1%,40% 0,52% 1.1%,61% .3%,70% 1%,81% 0,90% 1.2%,100% .4%,99.4% 18%,100% 37%,99.2% 55%,100% 74%,99.5% 100%,90% 98.6%,80% 100%,71% 98.8%,60% 100%,50% 98.5%,39% 99.8%,29% 98.7%,18% 100%,9% 98.9%,0 100%,.6% 80%,0 61%,.7% 42%,0 22%)}
-.paper-top{display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.18em;border-top:1px solid #1A1712;border-bottom:3px double #1A1712;padding:6px 0}
-.paper-h{margin-top:14px;font-family:'Source Serif 4',Georgia,serif;font-weight:800;font-size:32px;line-height:1.08;letter-spacing:-0.015em}
-.paper-sub{margin-top:10px;font-style:italic;font-size:16px;line-height:1.35;color:#4A4234}
-.paper-cols{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid rgba(26,23,18,.35);padding-top:12px}
-.paper-cols div{display:flex;flex-direction:column;gap:7px}
-.paper-cols i{display:block;height:5px;width:100%;background:rgba(26,23,18,.22);border-radius:1px}
-.paper-src{margin-top:16px;font-size:13px;font-style:italic;color:#4A4234}
+/* Corriere screenshot card */
+.paper-slot{perspective:900px;padding:8px 0;display:flex;flex-direction:column;gap:14px}
+.paper{display:block;background:#fff;border-radius:14px;overflow:hidden;text-decoration:none;transform:rotate(-2deg);box-shadow:0 26px 50px rgba(0,0,0,.55)}
+.shot-bar{display:flex;justify-content:center;padding:14px 16px 12px;box-shadow:0 3px 6px rgba(0,0,0,.08);position:relative}
+.shot-bar img{width:62%;height:auto;display:block}
+.shot-title{aspect-ratio:1788/285;overflow:hidden}
+.shot-title img{display:block;width:100%;height:auto;margin-top:-7%}
+.shot-link{align-self:flex-end;display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#C7C7CC;font-size:15px;font-weight:600;text-decoration:none}
+.shot-link:hover{color:#fff}
 .js .paper-slot .paper{opacity:0;transform:translateY(-40px) rotateX(35deg) rotate(8deg) scale(1.15);transition:opacity .5s ease,transform 1s cubic-bezier(.2,1.25,.35,1)}
 .js .paper-slot.in .paper{opacity:1;transform:rotate(-2deg)}
 .js .rv-pop{opacity:0;transform:scale(.85);transition:opacity .6s ease,transform .7s cubic-bezier(.2,1.4,.4,1);transition-delay:var(--d,0s)}
@@ -153,15 +148,11 @@ details p{margin-top:10px;color:var(--muted);font-size:16px}
 <!-- TITOLO DI GIORNALE + 230 € -->
 <section style="background:#000;color:#fff;padding:72px 20px 40px;display:flex;flex-direction:column;gap:56px">
 <div class="paper-slot">
-<article class="paper">
-<div class="paper-top"><span>CRONACA</span><span>MARTEDÌ</span></div>
-<h2 class="paper-h">Telefonia, 3,2 milioni di italiani truffati per 731 milioni di euro</h2>
-<div class="paper-cols" aria-hidden="true">
-<div><i></i><i></i><i></i><i></i><i></i><i></i><i style="width:60%"></i></div>
-<div><i></i><i></i><i></i><i></i><i></i><i></i><i style="width:40%"></i></div>
-</div>
-<div class="paper-src">Fonte: Corriere della Sera</div>
-</article>
+<a class="paper" href="https://www.corriere.it/economia/consumi/26_settembre_08/telefonia-3-2-milioni-di-italiani-vittime-di-truffe-come-difendersi-9fdf92db-202c-4107-bdfc-84439e7bfxlk.shtml" target="_blank" rel="noopener" aria-label="Corriere della Sera: Telefonia, 3,2 milioni di italiani vittime di truffe, come difendersi. Apri l'articolo">
+<div class="shot-bar"><img src="corriere-logo.png" alt="Corriere della Sera" width="650" height="95"></div>
+<div class="shot-title"><img src="corriere-screen.png" alt="" width="1788" height="410"></div>
+</a>
+<a class="shot-link" href="https://www.corriere.it/economia/consumi/26_settembre_08/telefonia-3-2-milioni-di-italiani-vittime-di-truffe-come-difendersi-9fdf92db-202c-4107-bdfc-84439e7bfxlk.shtml" target="_blank" rel="noopener">Leggi l'articolo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
 </div>
 
 <div style="display:flex;flex-direction:column;gap:6px">
